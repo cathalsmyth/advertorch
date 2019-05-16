@@ -89,7 +89,8 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
     result_mag=torch.sqrt(torch.sum(x_adv**2,dim=1))
 
     print(result_mag)
-    x_adv=(x_adv/result_mag)*radius
+    print(x_adv.size())
+#     x_adv=(x_adv/result_mag)*radius
     return x_adv
 
 
