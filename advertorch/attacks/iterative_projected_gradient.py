@@ -51,7 +51,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
     """
     dimvalue=xvar.size()[1]
     radius=torch.sqrt(torch.sum(xvar**2,dim=1)).view(-1, 1).repeat(dimvalue,1).view(10,dimvalue)
-    print(radius)
+#     print(radius)
     if delta_init is not None:
         delta = delta_init
     else:
