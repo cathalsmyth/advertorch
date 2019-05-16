@@ -83,10 +83,10 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
             raise NotImplementedError(error)
 
         delta.grad.data.zero_()
-    x_adv=xvar + delta
-    result_mag=torch.sqrt(torch.sum(x_adv**2))
 
     x_adv = clamp(xvar + delta, clip_min, clip_max)
+    result_mag=torch.sqrt(torch.sum(x_adv**2))
+
     print(result_mag)
     x_adv=(x_adv/result_mag)*radius
     return x_adv
