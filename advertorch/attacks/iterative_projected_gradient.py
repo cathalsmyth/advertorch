@@ -29,7 +29,7 @@ from .utils import rand_init_delta
 
 def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
                       delta_init=None, minimize=False, ord=np.inf,
-                      clip_min=0.0, clip_max=1.0):
+                      clip_min=-1.0, clip_max=1.0):
     """
     Iteratively maximize the loss over the input. It is a shared method for
     iterative attacks including IterativeGradientSign, LinfPGD, etc.
