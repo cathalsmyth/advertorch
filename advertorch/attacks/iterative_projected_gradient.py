@@ -49,7 +49,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
 
     :return: tensor containing the perturbed input.
     """
-    radius=torch.sqrt(torch.sum(xvar**2))
+    radius=torch.sqrt(torch.sum(xvar**2),dim=1)
     print(radius)
     if delta_init is not None:
         delta = delta_init
@@ -86,7 +86,7 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
         delta.grad.data.zero_()
 
     x_adv = clamp(xvar + delta, clip_min, clip_max)
-    result_mag=torch.sqrt(torch.sum(x_adv**2))
+    result_mag=torch.sqrt(torch.sum(x_adv**2),dim=1)
 
     print(result_mag)
     x_adv=(x_adv/result_mag)*radius
