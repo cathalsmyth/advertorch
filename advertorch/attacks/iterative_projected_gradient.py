@@ -90,8 +90,8 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
     x_adv = clamp(xvar + delta, clip_min, clip_max)
     result_mag=torch.sqrt(torch.sum(x_adv**2,dim=1)).view(-1, 1).repeat(1,dimvalue).view(batchsize,dimvalue)
 
-    print(result_mag)
-    print(x_adv.size())
+#     print(result_mag)
+#     print(x_adv.size())
     x_adv=(x_adv/result_mag)*radius
     if BitFlag !=1:
       x_adv=torch.round(x_adv*BitFlag)
