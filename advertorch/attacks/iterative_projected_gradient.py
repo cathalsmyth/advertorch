@@ -29,7 +29,7 @@ from .utils import rand_init_delta
 
 def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
                       delta_init=None, minimize=False, ord=np.inf,
-                      clip_min=-1.0, clip_max=1.0):
+                      clip_min=-1.0, clip_max=1.0,BitFlag=1):
     """
     Iteratively maximize the loss over the input. It is a shared method for
     iterative attacks including IterativeGradientSign, LinfPGD, etc.
@@ -93,6 +93,9 @@ def perturb_iterative(xvar, yvar, predict, nb_iter, eps, eps_iter, loss_fn,
     print(result_mag)
     print(x_adv.size())
     x_adv=(x_adv/result_mag)*radius
+    if BitFlag !=1:
+      x_adv=torch.round(x_adv*BitFlag)
+      x_adv=x_adv/BitFlag
     return x_adv
 
 
